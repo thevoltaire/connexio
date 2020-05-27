@@ -1,0 +1,162 @@
+
+
+<h4 class="first">Employee Statictics</h4>
+<p-accordion>
+    <p-accordionTab header="Search Employes By Division">
+      <div class="box1">
+
+      <div class="ui-g ui-fluid">
+      <div class="ui-g-12 ui-md-4">
+        <div class="ui-inputgroup">
+            <!-- <button pButton type="button" label="Search"></button>
+            <input type="text" pInputText placeholder="Keyword">   -->
+            
+            <input #search placeholder="Division Id"
+            (keyup.enter)="findEmployeesbyDivision(search.value)"
+            > 
+            <button (click)="findEmployeesbyDivision(search.value)" >Search</button>           
+
+          <!-- division:	{
+            businessUnit	:string,
+            divisionHead	:Number,
+            divisionName	:string
+            id	:Number
+            }
+            empId	:Number,
+            employeeName	:string,
+            managerId	:Number,
+            payroleData	:Number -->
+
+        </div>
+    </div> 
+  </div> 
+    
+    <div class="box2" *ngIf="searchByDivison">
+    <p-table [value]="searchByDivison">
+      <ng-template pTemplate="header">
+          <tr>
+              <th>Id</th>
+              <th>Name</th>
+              <th>Division</th>
+              <th>Salary</th>
+              <th>Manager ID</th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-div>
+          <tr>
+              <td>{{div.empId}}</td>
+              <td>{{div.employeeName}}</td>
+              <td>{{div.division.businessUnit}}</td>
+              <td>{{div.payroleData}}</td>
+              <td>{{div.managerId}}</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+    
+  </div>
+
+
+  </p-accordionTab>
+    <p-accordionTab header="Search Employee with manager name wild card">
+      
+      <div class="box1">
+
+        <div class="ui-g ui-fluid">
+        <div class="ui-g-12 ui-md-4">
+          <div class="ui-inputgroup">
+              <!-- <button pButton type="button" label="Search"></button>
+              <input type="text" pInputText placeholder="Keyword">   -->
+              
+              <input #divsearch placeholder="Division Id"
+              (keyup.enter)="findEmployeesbyManager(divsearch.value)"
+              > 
+              <button (click)="findEmployeesbyManager(divsearch.value)" >Search</button>           
+  
+            <!-- division:	{
+              businessUnit	:string,
+              divisionHead	:Number,
+              divisionName	:string
+              id	:Number
+              }
+              empId	:Number,
+              employeeName	:string,
+              managerId	:Number,
+              payroleData	:Number -->
+  
+          </div>
+      </div> 
+    </div> 
+      
+      <div class="box2" *ngIf="searchByManager">
+      <p-table [value]="searchByManager">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Division</th>
+                <th>Salary</th>
+                <th>Manager ID</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-div>
+            <tr>
+                <td>{{div.empId}}</td>
+                <td>{{div.employeeName}}</td>
+                <td>{{div.division.businessUnit}}</td>
+                <td>{{div.payroleData}}</td>
+                <td>{{div.managerId}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>
+      
+    </div>
+  
+
+
+    </p-accordionTab>
+    <p-accordionTab header="Employee Statictics By Manager" (click)="findEmpStatsbyManager()">
+      
+  <div class="box2" *ngIf="empStatsByManager">
+      <p-table [value]="empStatsByManager">
+        <ng-template pTemplate="header">
+            <tr>
+                <th>Name Of The Manger</th>
+                <th>Number Of Reportees</th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-div>
+            <tr>
+                <td>{{div[0]}}</td>
+                <td>{{div[1]}}</td>
+            </tr>
+        </ng-template>
+    </p-table>
+  </div>  
+    
+    </p-accordionTab>
+
+    <p-accordionTab header="Employee Statictics By Division" (click)="findEmpStatsbyDivison()">
+      
+      <div class="box2" *ngIf="empStatsByDivison">
+          <p-table [value]="empStatsByDivison">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>Name Of The Divison</th>
+                    <th>Number Of Employees</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-div>
+                <tr>
+                    <td>{{div[0]}}</td>
+                    <td>{{div[1]}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+      </div>  
+        
+        </p-accordionTab>
+
+
+</p-accordion>

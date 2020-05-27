@@ -1,0 +1,20 @@
+p {
+    font-family: Lato;
+  }
+  
+  input.ng-invalid.ng-touched{
+    border: 1px solid red;
+  }
+  .box1 {
+    display: block;
+    padding: 10px;
+    margin-bottom: 40px; /* SIMPLY SET THIS PROPERTY AS MUCH AS YOU WANT. This changes the space below box1 */
+    text-align: justify;
+}
+
+  .box2 {
+    display: block;
+    padding: 10px;
+    text-align: justify;
+    margin-top: 40px; /* OR ADD THIS LINE AND SET YOUR PROPER SPACE as the space above box2 */
+}
